@@ -1,0 +1,40 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>CRUD Update</title>
+</head>
+<body>
+@model WebApplication2.Models.Coffee
+@Model.Name
+<form method="post" asp-action="UpdateById" asp-controller="Home">
+    <h3>Update coffee order</h3>
+    <p>
+        <label>ID</label><br/>
+        <input type="text" name="Id" value="@Model.Id" style="pointer-events: none;" tabindex="-1"/>
+    </p>
+    <p>
+        <label>Name</label><br/>
+        <input type="text" name="Name" value="@Model.Name"/>
+    </p>
+    <p>
+        <label>Amount</label><br/>
+        <input type="number" name="Amount" value="@Model.Amount"/>
+    </p>
+    <p>
+        <label>Price</label><br/>
+        <input type="number" name="Price" value="@Model.Price"/>
+    </p>
+
+    <p>
+        <input type="submit" value="Update"/>
+    </p>
+</form>
+<a href="~/Home/Index">Return to index</a>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿@page
+@model WebApplication2.Views.Home.Delete
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>CRUD Delete</title>
+</head>
+<body>
+<form method="post">
+
+    <h3>Add coffee order</h3>
+    <p>
+        <label>ID of order to delete</label><br />
+        <input type="text" name="Id" />
+    </p>
+    <p>
+        <input type="submit" value="Delete" />
+    </p>
+</form>
+<a href="~/Home/Index">Return to index</a>
+</body>
+</html>

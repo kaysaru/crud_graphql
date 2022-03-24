@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>CRUD index</title>
+    <link href="~/css/css.css" rel="stylesheet" asp-append-version="true">
+</head>
+<body>
+@model List<WebApplication2.Models.Coffee>
+There is @Model.Count items in list
+<table>
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Amount</td>
+        <td>Price</td>
+        <td>Actions</td>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var coffee in Model)
+    {
+        <tr>
+            <td>@coffee.Id</td>
+            <td>@coffee.Name</td>
+            <td>@coffee.Amount</td>
+            <td>@coffee.Price</td>
+            <td><a href="~/Home/Update?id=@coffee.Id">Update</a> | <a href="~/Home/Delete?id=@coffee.Id">Delete</a> </td>
+        </tr>
+    }
+            
+    </tbody>
+</table>
+    
+<a href="/Home/Add">Create</a>
+<a href="/Home/Delete">Delete</a>
+</body>
+</html>

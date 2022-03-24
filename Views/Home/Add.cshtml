@@ -1,0 +1,44 @@
+﻿@page
+
+@{
+    Layout = null;
+}
+
+@functions
+{
+    public IActionResult OnPost()
+    {
+        return Redirect("/Home/Index");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>CRUD add</title>
+</head>
+<body>
+<form method="post">
+
+    <h3>Add coffee order</h3>
+    <p>
+        <label>Name</label><br />
+        <input type="text" name="Name" />
+    </p>
+    <p>
+        <label>Amount</label><br />
+        <input type="number" name="Amount" />
+    </p>
+    <p>
+        <label>Price</label><br />
+        <input type="number" name="Price" />
+    </p>
+
+    <p>
+        <input type="submit" value="Add" />
+    </p>
+</form>
+<a href="~/Home/Index">Return to index</a>
+</body>
+</html>

@@ -22,18 +22,22 @@ namespace WebApplication2.GraphQL
             return result;
         }
 
-        public void UpdateCoffee([Service] CoffeeService coffeeService, [Service] ITopicEventSender eventSender, string id, string name, int amount, float price)
+        public async Task<Coffee> UpdateCoffee([Service] CoffeeService coffeeService, [Service] ITopicEventSender eventSender, string id, string name, int amount, float price)
         {
             var data = coffeeService.Get(id);
             data.Name = name;
             data.Amount = amount;
             data.Price = price;
-            coffeeService.Update(id, data);
+            var result = coffeeService.Update(id, data);
+            await eventSender.SendAsync("CoffeeUpdated", result);
+            return result;
         }
 
-        public void DeleteCoffee([Service] CoffeeService coffeeService, [Service] ITopicEventSender eventSender, string id)
+        public async Task<Coffee> DeleteCoffee([Service] CoffeeService coffeeService, [Service] ITopicEventSender eventSender, string id)
         {
-            coffeeService.Remove(id);
+            var result = coffeeService.Remove(id);
+            await eventSender.SendAsync("CoffeeRemoved", result);
+            return result;
         }
     }
 }

@@ -35,9 +35,10 @@ namespace WebApplication2.Services
             return coffee;
         }
 
-        public void Update(string id, Coffee coffeeIn)
+        public Coffee Update(string id, Coffee coffeeIn)
         {
             _coffees.ReplaceOne(coffee => coffee.Id == id, coffeeIn);
+            return coffeeIn;
         }
 
         public void Remove(Coffee bookIn)
@@ -45,9 +46,10 @@ namespace WebApplication2.Services
             _coffees.DeleteOne(coffee => coffee.Id == bookIn.Id);
         }
 
-        public void Remove(string id)
+        public Coffee Remove(string id)
         {
             _coffees.DeleteOne(coffee => coffee.Id == id);
+            return Get(id);
         }
     }
 }
